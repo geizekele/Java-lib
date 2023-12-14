@@ -1,0 +1,71 @@
+package br.com.web.na.vai;
+
+public class Lib {
+
+	//CONSTRUTOR PRIVADO
+	private Lib() {
+		throw new UnsupportedOperationException("Esta classe não pode ser instanciada.");
+	}
+
+	//OPERACAO SOMA
+	public static double soma(double... numeros) {
+		double resultado = 0;
+		for (double numero : numeros) {
+			resultado += numero;
+		}
+		return resultado; //RETORNO
+	}
+
+	//OPERACAO SUBTRACAO
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T subtracao(T numero1, T numero2) {
+		return (T) Double.valueOf(numero1.doubleValue() - numero2.doubleValue());
+	}
+	
+	//OPERACAO MULTIPLICACAO
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T multiplicacao(T numero1, T numero2) {
+		return (T) Double.valueOf(numero1.doubleValue() * numero2.doubleValue());
+	}
+
+	//OPERACAO DIVISAO
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T divisao(T numero1, T numero2) {
+		if (numero2.doubleValue() == 0) {
+			throw new IllegalArgumentException("Não é possível dividir por zero");
+		}
+		return (T) Double.valueOf(numero1.doubleValue() / numero2.doubleValue());
+	}
+
+	//CALCULO DE AREA (CIRCULO)
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularArea(T raio) {
+		return (T) Double.valueOf(Math.PI * raio.doubleValue() * raio.doubleValue());
+	}
+
+	//CALCULO PERIMETRO (RETANGULO)
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularPerimetro(T lado1, T lado2) {
+		return (T) Double.valueOf(2 * (lado1.doubleValue() + lado2.doubleValue()));
+	}
+
+	// CALCULO VOLUME (CUBO)
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularVolume(T lado) {
+		return (T) Double.valueOf(lado.doubleValue() * lado.doubleValue() * lado.doubleValue());
+	}
+
+	//JUROS SIMPLES
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T jurosSimples(T capital, T taxa, T tempo) {
+		return (T) Double.valueOf(capital.doubleValue() * taxa.doubleValue() * tempo.doubleValue());
+	}
+
+	//JUROS COMPOSTOS
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T jurosCompostos(T capital, T taxa, T tempo) {
+		double juros = capital.doubleValue() * Math.pow(1 + taxa.doubleValue(), tempo.doubleValue())
+				- capital.doubleValue();
+		return (T) Double.valueOf(juros);
+	}
+}

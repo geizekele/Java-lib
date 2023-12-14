@@ -67,14 +67,10 @@ public class Lib {
 	}
 
 	// CALCULO VOLUME (CUBO)
-	public static double calcularVolume(double lado) {
-		return Math.pow(lado, 3);
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularVolume(T lado) {
+		return (T) Double.valueOf(lado.doubleValue() * lado.doubleValue() * lado.doubleValue());
 	}
-	
-	// CALCULO AREA (QUADRADO)
-    public static double calcularAreaQuadrado(double lado) {
-        return Math.pow(lado, 2);
-    }
 
 	//JUROS SIMPLES
 	@SuppressWarnings("unchecked")

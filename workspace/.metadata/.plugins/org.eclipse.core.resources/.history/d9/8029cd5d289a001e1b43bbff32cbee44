@@ -72,7 +72,7 @@ public class Lib {
 	}
 	
 	// CALCULO AREA (QUADRADO)
-    public static double calcularAreaQuadrado(double lado) {
+    public static double calculorAreaQuadrado(double lado) {
         return Math.pow(lado, 2);
     }
 

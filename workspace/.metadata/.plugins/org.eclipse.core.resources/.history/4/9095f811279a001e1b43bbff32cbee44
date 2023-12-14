@@ -4,7 +4,7 @@ public class Lib {
 
 	//CONSTRUTOR PRIVADO
 	private Lib() {
-		throw new UnsupportedOperationException("ESTA CLASSE NAO PODE SER INSTANCIADA!");
+		throw new UnsupportedOperationException("Esta classe não pode ser instanciada.");
 	}
 
 	//OPERACAO SOMA
@@ -29,52 +29,37 @@ public class Lib {
 	}
 	
 	//OPERACAO MULTIPLICACAO
-	public static double multiplicacao(double... numeros) {
-        if (numeros.length < 2) {
-            throw new IllegalArgumentException("NECESSARIO PELO MENOS 2 NUMEROS!");
-        }
-        double resultado = 1;
-    	for (double numero : numeros) {
-    		resultado += numero;
-    	}    
-		return resultado;
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T multiplicacao(T numero1, T numero2) {
+		return (T) Double.valueOf(numero1.doubleValue() * numero2.doubleValue());
 	}
 
 	//OPERACAO DIVISAO
-	public static double divisao(double... numeros) {
-        if (numeros.length < 2) {
-            throw new IllegalArgumentException("NECESSARIO PELO MENOS 2 NUMEROS!");
-        }
-        double resultado = 0;
-        for (int i = 1; i < numeros.length; i++) {
-            if (numeros[i] == 0) {
-                throw new IllegalArgumentException("Não pode dividir por zero.");
-            }
-            resultado /= numeros[i];
-        }
-
-        return resultado;
-    }
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T divisao(T numero1, T numero2) {
+		if (numero2.doubleValue() == 0) {
+			throw new IllegalArgumentException("Não é possível dividir por zero");
+		}
+		return (T) Double.valueOf(numero1.doubleValue() / numero2.doubleValue());
+	}
 
 	//CALCULO DE AREA (CIRCULO)
-	public static double calcularArea(double raio) {
-		return Math.PI * raio * raio;
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularArea(T raio) {
+		return (T) Double.valueOf(Math.PI * raio.doubleValue() * raio.doubleValue());
 	}
 
 	//CALCULO PERIMETRO (RETANGULO)
-	public static double calcularPerimetro(double lado1, double lado2) {
-		return 2 * (lado1 + lado2);
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularPerimetro(T lado1, T lado2) {
+		return (T) Double.valueOf(2 * (lado1.doubleValue() + lado2.doubleValue()));
 	}
 
 	// CALCULO VOLUME (CUBO)
-	public static double calcularVolume(double lado) {
-		return Math.pow(lado, 3);
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularVolume(T lado) {
+		return (T) Double.valueOf(lado.doubleValue() * lado.doubleValue() * lado.doubleValue());
 	}
-	
-	// CALCULO AREA (QUADRADO)
-    public static double calcularAreaQuadrado(double lado) {
-        return Math.pow(lado, 2);
-    }
 
 	//JUROS SIMPLES
 	@SuppressWarnings("unchecked")

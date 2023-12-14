@@ -57,24 +57,22 @@ public class Lib {
     }
 
 	//CALCULO DE AREA (CIRCULO)
-	public static double calcularArea(double raio) {
-		return Math.PI * raio * raio;
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularArea(T raio) {
+		return (T) Double.valueOf(Math.PI * raio.doubleValue() * raio.doubleValue());
 	}
 
 	//CALCULO PERIMETRO (RETANGULO)
-	public static double calcularPerimetro(double lado1, double lado2) {
-		return 2 * (lado1 + lado2);
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularPerimetro(T lado1, T lado2) {
+		return (T) Double.valueOf(2 * (lado1.doubleValue() + lado2.doubleValue()));
 	}
 
 	// CALCULO VOLUME (CUBO)
-	public static double calcularVolume(double lado) {
-		return Math.pow(lado, 3);
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T calcularVolume(T lado) {
+		return (T) Double.valueOf(lado.doubleValue() * lado.doubleValue() * lado.doubleValue());
 	}
-	
-	// CALCULO AREA (QUADRADO)
-    public static double calcularAreaQuadrado(double lado) {
-        return Math.pow(lado, 2);
-    }
 
 	//JUROS SIMPLES
 	@SuppressWarnings("unchecked")

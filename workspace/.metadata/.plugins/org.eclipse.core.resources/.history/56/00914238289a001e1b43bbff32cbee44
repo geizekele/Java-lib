@@ -70,11 +70,6 @@ public class Lib {
 	public static double calcularVolume(double lado) {
 		return Math.pow(lado, 3);
 	}
-	
-	// CALCULO AREA (QUADRADO)
-    public static double calcularAreaQuadrado(double lado) {
-        return Math.pow(lado, 2);
-    }
 
 	//JUROS SIMPLES
 	@SuppressWarnings("unchecked")
