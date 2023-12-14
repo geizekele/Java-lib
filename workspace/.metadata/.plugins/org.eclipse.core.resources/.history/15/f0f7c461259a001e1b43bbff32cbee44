@@ -8,12 +8,13 @@ public class Lib {
 	}
 
 	//OPERACAO SOMA
-	public static double soma(double... numeros) {
+	@SuppressWarnings("unchecked")
+	public static <T extends Number> T soma(T... numeros) {
 		double resultado = 0;
-		for (double numero : numeros) {
-			resultado += numero;
+		for (T numero : numeros) {
+			resultado += numero.doubleValue();
 		}
-		return resultado; //RETORNO
+		return (T) Double.valueOf(resultado); //RETORNO
 	}
 
 	//OPERACAO SUBTRACAO
@@ -23,7 +24,6 @@ public class Lib {
 	}
 	
 	//OPERACAO MULTIPLICACAO
-	@SuppressWarnings("unchecked")
 	public static <T extends Number> T multiplicacao(T numero1, T numero2) {
 		return (T) Double.valueOf(numero1.doubleValue() * numero2.doubleValue());
 	}

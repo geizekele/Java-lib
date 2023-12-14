@@ -2,34 +2,28 @@ package br.com.web.na.vai;
 
 public class Lib {
 
-	//CONSTRUTOR PRIVADO
-	private Lib() {
-		throw new UnsupportedOperationException("Esta classe não pode ser instanciada.");
-	}
+	private OperacoesMatematicas() {
+	        // Construtor privado para impedir a instanciação da classe
+		throw new UnsupportedOperationException("Esta classe não pode ser instanciada. Utilize os métodos estáticos para realizar operações matemáticas.");
+	    }
 
-	//OPERACAO SOMA
-	public static double soma(double... numeros) {
+	// Operações aritméticas básicas
+	public static <T extends Number> T soma(T... numeros) {
 		double resultado = 0;
-		for (double numero : numeros) {
-			resultado += numero;
+		for (T numero : numeros) {
+			resultado += numero.doubleValue();
 		}
-		return resultado; //RETORNO
+		return (T) Double.valueOf(resultado); // Retorna o resultado da soma
 	}
 
-	//OPERACAO SUBTRACAO
-	@SuppressWarnings("unchecked")
 	public static <T extends Number> T subtracao(T numero1, T numero2) {
 		return (T) Double.valueOf(numero1.doubleValue() - numero2.doubleValue());
 	}
-	
-	//OPERACAO MULTIPLICACAO
-	@SuppressWarnings("unchecked")
+
 	public static <T extends Number> T multiplicacao(T numero1, T numero2) {
 		return (T) Double.valueOf(numero1.doubleValue() * numero2.doubleValue());
 	}
 
-	//OPERACAO DIVISAO
-	@SuppressWarnings("unchecked")
 	public static <T extends Number> T divisao(T numero1, T numero2) {
 		if (numero2.doubleValue() == 0) {
 			throw new IllegalArgumentException("Não é possível dividir por zero");
@@ -37,32 +31,24 @@ public class Lib {
 		return (T) Double.valueOf(numero1.doubleValue() / numero2.doubleValue());
 	}
 
-	//CALCULO DE AREA (CIRCULO)
-	@SuppressWarnings("unchecked")
-	public static <T extends Number> T calcularArea(T raio) {
+	// Cálculos de área, perímetro e volume (exemplo para círculo, retângulo e cubo)
+	public static <T extends Number> T calcularAreaCirculo(T raio) {
 		return (T) Double.valueOf(Math.PI * raio.doubleValue() * raio.doubleValue());
 	}
 
-	//CALCULO PERIMETRO (RETANGULO)
-	@SuppressWarnings("unchecked")
-	public static <T extends Number> T calcularPerimetro(T lado1, T lado2) {
+	public static <T extends Number> T calcularPerimetroRetangulo(T lado1, T lado2) {
 		return (T) Double.valueOf(2 * (lado1.doubleValue() + lado2.doubleValue()));
 	}
 
-	// CALCULO VOLUME (CUBO)
-	@SuppressWarnings("unchecked")
-	public static <T extends Number> T calcularVolume(T lado) {
+	public static <T extends Number> T calcularVolumeCubo(T lado) {
 		return (T) Double.valueOf(lado.doubleValue() * lado.doubleValue() * lado.doubleValue());
 	}
 
-	//JUROS SIMPLES
-	@SuppressWarnings("unchecked")
+	// Cálculos de juros simples e compostos
 	public static <T extends Number> T jurosSimples(T capital, T taxa, T tempo) {
 		return (T) Double.valueOf(capital.doubleValue() * taxa.doubleValue() * tempo.doubleValue());
 	}
 
-	//JUROS COMPOSTOS
-	@SuppressWarnings("unchecked")
 	public static <T extends Number> T jurosCompostos(T capital, T taxa, T tempo) {
 		double juros = capital.doubleValue() * Math.pow(1 + taxa.doubleValue(), tempo.doubleValue())
 				- capital.doubleValue();
